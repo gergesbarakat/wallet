@@ -6,6 +6,15 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <script src="https://kit.fontawesome.com/7552b865b0.js" crossorigin="anonymous"></script>
+        <!-- FontAwesome -->
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -33,4 +42,6 @@
             </main>
         </div>
     </body>
+<script src="{{ asset('script.js') }}"></script>
+
 </html>
