@@ -103,15 +103,39 @@ var data = [
       {"title": "Yahoo", "vendor": "Eget Odio Aliquam Corporation", "date": "30 Oct, 2016", "amount": "9453.17", "currency": "$", "action": "credit"},
       {"title": "Sibelius", "vendor": "Eros Non Enim Company", "date": "15 Feb, 2018", "amount": "5283.54", "currency": "$", "action": "debit"}
       ]
+    },
+    {
+      type: "mc",
+      number: "**** **** **** 8866",
+      month: "02",
+      year: "22",
+      id: 3,
+      transactions: [
+       {"title": "Borland", "vendor": "Cursus Diam PC", "date": "30 Apr, 2017", "amount": "9647.17", "currency": "$", "action": "debit"},
+      {"title": "Sibelius", "vendor": "Ridiculus Corporation", "date": "17 Apr, 2017", "amount": "1058.02", "currency": "$", "action": "credit"},
+      {"title": "Altavista", "vendor": "Molestie Orci Tincidunt Company", "date": "9 Mar, 2018", "amount": "6622.94", "currency": "$", "action": "credit"},
+      {"title": "Sibelius", "vendor": "Eu Industries", "date": "20 Mar, 2017", "amount": "2649.70", "currency": "$", "action": "credit"},
+      {"title": "Yahoo", "vendor": "Mollis Nec Cursus Associates", "date": "20 Sep, 2016", "amount": "9343.63", "currency": "$", "action": "credit"},
+      {"title": "Sibelius", "vendor": "Eget Metus Eu Incorporated", "date": "27 Jun, 2016", "amount": "6516.49", "currency": "$", "action": "credit"},
+      {"title": "Google", "vendor": "Tempus Company", "date": "26 May, 2017", "amount": "8504.32", "currency": "$", "action": "debit"},
+      {"title": "Chami", "vendor": "Id Ante Incorporated", "date": "13 Aug, 2017", "amount": "3592.96", "currency": "$", "action": "credit"},
+      {"title": "Finale", "vendor": "Iaculis Quis Incorporated", "date": "2 Jan, 2017", "amount": "8743.26", "currency": "$", "action": "debit"},
+      {"title": "Chami", "vendor": "Eu Nulla At Institute", "date": "5 Sep, 2017", "amount": "3112.89", "currency": "$", "action": "credit"},
+      {"title": "Adobe", "vendor": "Arcu Nunc Inc.", "date": "22 Aug, 2017", "amount": "2239.85", "currency": "$", "action": "credit"},
+      {"title": "Macromedia", "vendor": "Eros LLP", "date": "17 Feb, 2018", "amount": "3641.58", "currency": "$", "action": "debit"},
+      {"title": "Macromedia", "vendor": "Diam Dictum Associates", "date": "24 Dec, 2016", "amount": "3592.79", "currency": "$", "action": "credit"},
+      {"title": "Yahoo", "vendor": "Eget Odio Aliquam Corporation", "date": "30 Oct, 2016", "amount": "9453.17", "currency": "$", "action": "credit"},
+      {"title": "Sibelius", "vendor": "Eros Non Enim Company", "date": "15 Feb, 2018", "amount": "5283.54", "currency": "$", "action": "debit"}
+      ]
     }
   ];
-  
+
   // vars
   var balance = 0;
-  
+
   // append cc to modal
   var ccModalAppend= function(ccType, ccNum, month, year) {
-      if(ccType == 'amex') {	
+      if(ccType == 'amex') {
           $(".cc-select").prepend(
             '<div class="cc ' +
             ccType +
@@ -143,10 +167,10 @@ var data = [
             "</div>\
             </div>"
           );
-      }	
+      }
   }
-  
-  
+
+
   // append credit cards
   var ccAppend = function(data) {
       $(".cc-select").append(
@@ -163,11 +187,11 @@ var data = [
         data.year +
         "</div>\
         </div>"
-      )	
+      )
   }
-  
-  // load trams data 
-  var load = function(id, data) {  
+
+  // load trams data
+  var load = function(id, data) {
         clearTrans();
         balance = 0;
         data.forEach(function(e) {
@@ -175,12 +199,12 @@ var data = [
             startAppend(e);
           }
         });
-        balanceCalc(balance);  
+        balanceCalc(balance);
         noTrans();
   };
-  
+
   // count valid cc numbers
-  var countValid = function(ccType) {    
+  var countValid = function(ccType) {
       if(ccType == 'amex') {
         if($('#ccnum').val().length != 15) {
           $('#ccnum').removeClass('valid-green')
@@ -201,9 +225,9 @@ var data = [
           $('#ccnum').removeClass('valid-red')
           return true;
         }
-      }  
+      }
   }
-  
+
   // append trans data
   var startAppend = function(e) {
       for (var i = 0; i < e.transactions.length; i++) {
@@ -245,19 +269,19 @@ var data = [
             </div>"
           ).show('fast');
         noTrans();
-      }    
+      }
   }
-  
+
   // calc balance and format
   var balanceCalc = function balanceCalc(balance) {
        return balance < 0  ? $("#balance").html("$(" + Math.abs(balance).toLocaleString() + ")")  : $("#balance").html("$" + balance.toLocaleString() + "");
   }
-  
+
   // clear trans list
   var clearTrans = function(){
       $(".trans-list").empty().hide();
   }
-  
+
   // clear modal
   var clearModal = function() {
     $('.cc-img').removeClass('cc-md-active')
@@ -265,47 +289,47 @@ var data = [
     $('#ccnum').css('border','1px solid #e1e1e1;')
     $('#ccnum').removeClass('valid-red').removeClass('valid-green')
   }
-  
+
   // no trans
   var noTrans = function() {
       $('.trans-list').children().length == 0 ? $(".trans-list").append('<h5 class="no-trans"> No transactions for this card</h5>').show('fast') :"";
   }
-  
+
   // load inital data
-  $(document).ready(function() {    
+  $(document).ready(function() {
     data.forEach(function(e){
       ccAppend(e)
-    })  
-    $(".cc:eq(0)").addClass("cc-active")  
-    load($(".cc-active").attr("id"),data)  
+    })
+    $(".cc:eq(0)").addClass("cc-active")
+    load($(".cc-active").attr("id"),data)
   });
-  
+
   // click listener for active card
   $(document).on("click", ".cc", function(e) {
     $(".cc").removeClass("cc-active");
     $(this).addClass("cc-active");
-    load($(".cc-active").attr("id"),data)  
+    load($(".cc-active").attr("id"),data)
   });
-  
+
   // click listener for active card in modal selector
   $(document).on("click", ".cc-img", function(e) {
     $(".cc-img").removeClass("cc-md-active");
     $(this).addClass("cc-md-active");
-    ($(".md-cc > .cc-md-active").attr("class").split(" ")[1] == 'amex') ? $('#ccnum').attr('placeholder','**** ****** *****') : $('#ccnum').attr('placeholder','**** **** **** ****')   
+    ($(".md-cc > .cc-md-active").attr("class").split(" ")[1] == 'amex') ? $('#ccnum').attr('placeholder','**** ****** *****') : $('#ccnum').attr('placeholder','**** **** **** ****')
     $('#ccnum, #year, #month').removeAttr('disabled');
   });
-  
+
   // close modal
   $(document).on("click", ".modal-close", function(e) {
     $(".modal").hide();
     clearModal();
   });
-  
+
   // open modal
   $(".modal-open").on("click", function(e) {
     $(".modal").show();
   });
-  
+
   // add new card logic
   // TODO: Add numbous checks, sanitize, error catching
   $(document).on("click", ".modal-add-cc", function(e) {
@@ -316,11 +340,11 @@ var data = [
     var ccNum = $("#ccnum").val().substr($("#ccnum").val().length - 4);
     var month = $("#month").val();
     var year = $("#year").val();
-  
+
     if (ccNum && month && year && ccType) {
       $(".modal").hide();
       $(".cc").removeClass("cc-active");
-      
+
         ccModalAppend(ccType,ccNum,month,year)
       var p = data[data.length-1].id + 1
       data.push({
@@ -334,15 +358,14 @@ var data = [
       clearTrans()
       clearModal();
       load(ccType,data)
-      
+
     } else {
       alert("Sorry, missing required fields"); // will do for now
     }
   });
-  
+
   // keypress cc count
   $('#ccnum').on('keyup', function(){
     var ccType = $(".md-cc > .cc-md-active").attr("class").split(" ")[1];
     countValid(ccType);
   })
-  
