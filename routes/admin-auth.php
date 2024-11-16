@@ -6,12 +6,15 @@ use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware('guest')->group(function () {
+        Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 
         Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
@@ -20,6 +23,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
      });
 
     Route::middleware('auth:admin')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
         Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
 

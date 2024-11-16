@@ -1,8 +1,10 @@
+
 <x-guest-layout>
+    <h1 class="text-white w-full text-center text-xl">User Login</h1>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('user.login') }}">
         @csrf
 
         <!-- Email Address -->

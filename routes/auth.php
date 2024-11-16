@@ -8,12 +8,18 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('user')->name('user.')->group(function () {
 
     Route::middleware('guest')->group(function () {
+
+        Route::get('/', function () {return view('auth.login');});
+
+        Route::get('/login', function () {return view('auth.login');});
+
         Route::get('register', [RegisteredUserController::class, 'create'])
             ->name('register');
 
@@ -38,6 +44,13 @@ Route::prefix('user')->name('user.')->group(function () {
     });
 
     Route::middleware('auth:web')->group(function () {
+        
+        Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
         Route::get('verify-email', EmailVerificationPromptController::class)
             ->name('verification.notice');
 

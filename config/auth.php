@@ -44,7 +44,7 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'super_admin' => [
+        'super-admin' => [
             'driver' => 'session',
             'provider' => 'super_admins',
         ],
@@ -74,12 +74,12 @@ return [
         ],
 
         'admins' => [
-            'driver' => 'database',
-            'table' =>  env('AUTH_MODEL', App\Models\Admin::class),
+            'driver' => 'eloquent',
+            'model' =>   App\Models\Admin::class ,
         ],
         'super_admins' => [
-            'driver' => 'database',
-            'table' =>  env('AUTH_MODEL', App\Models\SuperAdmin::class),
+            'driver' => 'eloquent',
+            'model' =>   App\Models\SuperAdmin::class ,
         ],
     ],
 
