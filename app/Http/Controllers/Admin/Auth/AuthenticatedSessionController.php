@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin.dashboard');
+            return redirect()->intended(route('admin.dashboard', absolute: false));
         }
 
         return back()->withErrors([
@@ -44,12 +44,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('admin.login');
+        return redirect('admin/login');
     }
 }

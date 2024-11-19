@@ -9,8 +9,19 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WalletController;
+
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+
+
+
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+->name('login');
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+->name('login');
 
 Route::prefix('user')->name('user.')->group(function () {
 
@@ -18,7 +29,6 @@ Route::prefix('user')->name('user.')->group(function () {
 
         Route::get('/', function () {return view('auth.login');});
 
-        Route::get('/login', function () {return view('auth.login');});
 
         Route::get('register', [RegisteredUserController::class, 'create'])
             ->name('register');
@@ -44,8 +54,11 @@ Route::prefix('user')->name('user.')->group(function () {
     });
 
     Route::middleware('auth:web')->group(function () {
-        
-        Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+
+        Route::resource('wallet', WalletController::class);
+
+        Route::resource('transaction',TransactionController::class);
+         Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

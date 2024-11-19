@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
+
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        //
+        echo "asdfgdsfgsdfgsdfgsdfas";
     }
 
     /**
@@ -20,15 +23,26 @@ class WalletController extends Controller
      */
     public function create()
     {
-        //
-    }
+        echo "asdfas";
+     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'wallet_name' => 'required|max:15|min:4',
+            'wallet_type' => 'required|max:15|min:4'
+        ]);
+        $wallet = Wallet::create([
+            'name' => $request->wallet_name,
+            'type' => $request->wallet_type,
+            'user_id' =>  AUTH::user()->id,
+        ]);
+
+        return redirect()->route('user.dashboard')->with('success',$wallet->name.' created successfully');
+
     }
 
     /**

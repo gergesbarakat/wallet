@@ -9,4 +9,9 @@ class Transaction extends Model
 {
     /** @use HasFactory<\Database\Factories\TransactionFactory> */
     use HasFactory;
+    protected $table = "transactions";
+    protected $fillable = ['amount','type','wallet_id','category','describtion'];
+
+
+
 }
