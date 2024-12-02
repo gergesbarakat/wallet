@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\DB;
             </aside>
             <content class="right-trans w-full h-full flex flex-col overflow-scroll">
                 <?php
-                $first_wallet = DB::table('wallets')
+                    $first_wallet = DB::table('wallets')
                     ->where('user_id', AUTH::user()->id)
                     ->take(1)
                     ->get();
@@ -132,7 +132,7 @@ use Illuminate\Support\Facades\DB;
     <div class="modal transaction-modal">
         <div class="modal-body dark:bg-gray-600">
             <h3>Add a New Card</h3>
-            <div class="modal-close" onclick="$('.transaction-modal').hide(400)">x</div>
+            <div class="modal-close rounded text-white bg-red-400 py-1 px-2" onclick="$('.transaction-modal').hide(400)">x</div>
             <form class="mt-3" action="{{ route('user.transaction.store') }}" method="post">
                 @method('POST')
                 @csrf
@@ -150,10 +150,10 @@ use Illuminate\Support\Facades\DB;
 
 
 
-                <div class="my-4">
+                <div class="">
                     <label for="transaction_type" class=" text-left w-100 pt-5 dark:text-white">Transaction type</label>
                     <select required name="transaction_type" id="transaction_type"
-                        class='w-full my-3 rounded dark:bg-gray-700 p-2 dark:text-white focus:border-none'>
+                        class='w-full rounded  p-2 dark:text-white focus:border-none'>
 
                         <option value="debit">debit</option>
                         <option value="credit">credit</option>
