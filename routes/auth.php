@@ -22,6 +22,8 @@ Route::get('/', [AuthenticatedSessionController::class, 'create'])
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
 ->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+->name('login');
 
 Route::prefix('user')->name('user.')->group(function () {
 

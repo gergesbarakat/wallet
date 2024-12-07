@@ -23,7 +23,7 @@
 
 <meta name="keywords" content="">
 
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/logo/favicon.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/uploads/logo/favicon.png') }}">
 
 
 
@@ -70,7 +70,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <form id="add-user" action="{{ route('users.store') }}" method="post"
+                                <form id="add-user" action="{{ route('admin.users.store') }}" method="post"
                                     autocomplete="off" enctype="multipart/form-data" novalidate="novalidate"
                                     class="bv-form">
                                     @method('post')
@@ -180,7 +180,7 @@
                                     <div class="form-group mt-4">
                                         <button class="btn btn-primary mr-2" name="form_submit" value="submit"
                                             type="submit">Update user</button>
-                                        <a href="{{ route('users.show', '') }}" class="btn btn-cancel">Cancel</a>
+                                        <a href="{{ route('admin.users.show', '') }}" class="btn btn-cancel">Cancel</a>
                                     </div>
                                 </form>
 

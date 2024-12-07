@@ -18,15 +18,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 </head>
 
 
@@ -90,7 +81,7 @@
                                     <div class="dash-widget-info">
 
                                         <h3>
-                                            {{ count(DB::table('users')->where('type', '!=', 'admin')->get('type')->all()) }}
+                                            {{ count(DB::table('users')->get()->all()) }}
                                         </h3>
 
                                         <h6 class="text-muted">Users</h6>
@@ -155,8 +146,7 @@
                                     <div class="dash-widget-info">
 
                                         <h3>
-
-                                            {{ count(DB::table('rooms')->get('name')->all()) }}</h3>
+ </h3>
 
                                         <h6 class="text-muted">Rooms</h6>
 

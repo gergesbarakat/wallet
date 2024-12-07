@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost/joweb/wallet/'),
-    'asset_url' => env('ASSET_URL', 'http://localhost/joweb/wallet/public/'),
+    'asset_url' => env('ASSET_URL', 'http://localhost/joweb/wallet/'),
 
     /*
     |--------------------------------------------------------------------------

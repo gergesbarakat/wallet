@@ -66,12 +66,12 @@ use App\models\User;
                             <h3 class="page-title">users</h3>
                         </div>
                         <div class="col-auto text-right">
-                            <a href="{{ route('users.show','1') }}" class="btn btn-primary add-button"><i
+                            <a href="{{ route('admin.users.show','1') }}" class="btn btn-primary add-button"><i
                                     class="fas fa-sync"></i></a>
                             <a class="btn btn-white filter-btn mr-3" href="javascript:void(0);" id="filter_search">
                                 <i class="fas fa-filter"></i>
                             </a>
-                            <a href="{{ route('users.create') }}" class="btn btn-primary add-button"><i
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-primary add-button"><i
                                     class="fas fa-plus"></i></a>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ use App\models\User;
                 <!-- /Page Header -->
 
                 <!-- Search Filter -->
-                <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data"
+                <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data"
                     id="filter_inputs">
                     @csrf
                     <div class="card filter-card">
@@ -153,14 +153,12 @@ use App\models\User;
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>first name</th>
+                                                <th>  name</th>
 
-                                                <th>last name</th>
-                                                <th>email</th>
+                                                 <th>email</th>
 
                                                 <th>phone</th>
-                                                <th>type</th>
-                                                <th>subscribtion</th>
+                                                 <th>subscribtion</th>
                                                 <th>status</th>
 
                                                 <th>Date created</th>
@@ -171,7 +169,7 @@ use App\models\User;
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $users = DB::table('users')->where('type','!=','admin')->orderBy('created_at')->get()->all();
+                                            $users = DB::table('users')->orderBy('created_at')->get()->all();
                                             ?>
                                             @foreach ($users as $user)
                                                 <tr>
@@ -179,14 +177,12 @@ use App\models\User;
 
 
                                                     <td>
-                                                        {{ $user->first_name }} </td>
-                                                     <td>{{ $user->last_name }}  </td>
+                                                        {{ $user->name }} </td>
 
                                                     <td>{{ $user->email }}  </td>
                                                     <td>{{ $user->phone }}  </td>
 
-                                                    <td>{{ $user->type }}  </td>
-
+ 
 
                                                     <td>{{ DB::table('subscribtions')->where('id', $user->subscribtion_id)->value('name') != ''  ? DB::table('subscribtions')->where('id', $user->subscribtion_id)->value('name') : 'NO Subscribtion'}}</td>
                                                     <td>
@@ -207,7 +203,7 @@ use App\models\User;
                                                     <td>{{ $user->updated_at }}</td>
 
                                                     <td>
-                                                        <a href="{{ route('users.edit', $user->id) }}"
+                                                        <a href="{{ route('admin.users.edit', $user->id) }}"
                                                             class="btn btn-sm bg-success-light mr-2">
                                                             <i class="far fa-edit mr-1"></i> Edit
                                                         </a>
@@ -216,7 +212,7 @@ use App\models\User;
                                                             id="Onremove_1" data-id="1"><i
                                                                 class="far fa-trash-alt mr-1"></i> Delete</a>
                                                         <form id="delete_user_{{ $user->id }}" method="post"
-                                                            action="{{ route('users.destroy', $user->id) }}"
+                                                            action="{{ route('admin.users.destroy', $user->id) }}"
                                                             style="display: none">
                                                             @csrf
                                                             @method('DELETE')

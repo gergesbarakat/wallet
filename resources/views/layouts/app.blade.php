@@ -10,14 +10,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="{{ asset('style.css') }}" rel="stylesheet" />
 
     <!-- Scripts -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
         integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
 
 </head>
 
@@ -59,6 +58,6 @@
         </main>
     </div>
 </body>
-<script src="{{ asset('script.js') }}"></script>
+@vite('resources/js/app.js')
 
 </html>

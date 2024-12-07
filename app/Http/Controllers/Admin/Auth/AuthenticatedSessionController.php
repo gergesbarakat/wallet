@@ -16,7 +16,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.login');
+        if(AUTH::guard('admin')->check()){
+            return view('admin.dashboard');
+        }else{
+            return view('admin.auth.login');
+
+        }
     }
 
     /**

@@ -11,15 +11,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="{{ asset('style.css') }}" rel="stylesheet" />
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
         integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite(['public/style.css', 'public/script.js'])
-</head>
+
+ </head>
 
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
@@ -35,6 +36,8 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('script.js') }}"></script>
+<script src="{{ asset('resources/js/app.js') }}"></script>
+
+
 
 </html>

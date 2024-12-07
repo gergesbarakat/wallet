@@ -65,12 +65,12 @@ use App\models\User;
                             <h3 class="page-title">Subscribtions</h3>
                         </div>
                         <div class="col-auto text-right">
-                            <a href="{{ route('subscribtions.index') }}" class="btn btn-primary add-button"><i
+                            <a href="{{ route('admin.subscribtions.index') }}" class="btn btn-primary add-button"><i
                                     class="fas fa-sync"></i></a>
                             <a class="btn btn-white filter-btn mr-3" href="javascript:void(0);" id="filter_search">
                                 <i class="fas fa-filter"></i>
                             </a>
-                            <a href="{{ route('subscribtions.create') }}" class="btn btn-primary add-button"><i
+                            <a href="{{ route('admin.subscribtions.create') }}" class="btn btn-primary add-button"><i
                                     class="fas fa-plus"></i></a>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ use App\models\User;
                 <!-- /Page Header -->
 
                 <!-- Search Filter -->
-                <form action="{{ route('subscribtions.store') }}" method="post" enctype="multipart/form-data"
+                <form action="{{ route('admin.subscribtions.store') }}" method="post" enctype="multipart/form-data"
                     id="filter_inputs">
                     @csrf
                     <div class="card filter-card">
@@ -198,7 +198,7 @@ use App\models\User;
                                                     <td>{{ $subscribtion->updated_at }}</td>
 
                                                     <td>
-                                                        <a href="{{ route('subscribtions.edit', $subscribtion->id) }}"
+                                                        <a href="{{ route('admin.subscribtions.edit', $subscribtion->id) }}"
                                                             class="btn btn-sm bg-success-light mr-2">
                                                             <i class="far fa-edit mr-1"></i> Edit
                                                         </a>
@@ -207,7 +207,7 @@ use App\models\User;
                                                             id="Onremove_1" data-id="1"><i
                                                                 class="far fa-trash-alt mr-1"></i> Delete</a>
                                                         <form id="delete_subscribtion_{{ $subscribtion->id }}" method="post"
-                                                            action="{{ route('subscribtions.destroy', $subscribtion->id) }}"
+                                                            action="{{ route('admin.subscribtions.destroy', $subscribtion->id) }}"
                                                             style="display: none">
                                                             @csrf
                                                             @method('DELETE')

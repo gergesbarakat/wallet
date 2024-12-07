@@ -26,7 +26,7 @@ use App\models\Category;
 
 <meta name="keywords" content="">
 
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/logo/favicon.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/uploads/logo/favicon.png') }}">
 
 
 
@@ -77,7 +77,7 @@ use App\models\Category;
                          ?>
                         <div class="card">
                             <div class="card-body">
-                                <form id="add-subscribtion" action="{{ route('subscribtions.update',$subscribtion->id) }}" method="post"
+                                <form id="add-subscribtion" action="{{ route('admin.subscribtions.update',$subscribtion->id) }}" method="post"
                                     autocomplete="off" enctype="multipart/form-data" novalidate="novalidate"
                                     class="bv-form">
 
@@ -169,7 +169,7 @@ use App\models\Category;
                                     <div class="form-group mt-4">
                                         <button class="btn btn-primary mr-2" name="form_submit" value="submit"
                                             type="submit">Update subscribtion</button>
-                                        <a href="{{ route('subscribtions.index') }}" class="btn btn-cancel">Cancel</a>
+                                        <a href="{{ route('admin.subscribtions.index') }}" class="btn btn-cancel">Cancel</a>
                                     </div>
 
                                 </form>
