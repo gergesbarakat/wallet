@@ -38,8 +38,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|min:3|max:30',
-            'last_name' => 'required|min:3|max:30',
+            'name' => 'required|min:3|max:30',
             'phone' => 'required|numeric|unique:users|min:11',
             'email' => 'required|email|unique:users|min:3|max:1000',
             'user_subscribtion' => 'required|integer|min:1',
@@ -48,9 +47,8 @@ class UsersController extends Controller
 
 
         ]);
-        $user = user::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
+        $user = User::create([
+            'name' => $request->last_name,
             'phone' => $request->phone,
             'email' => $request->email,
             'subscribtion_id' => $request->user_subscribtion,
@@ -82,12 +80,13 @@ class UsersController extends Controller
 
 
         $request->validate([
-            'first_name' => 'required|min:3|max:30',
-            'last_name' => 'required|min:3|max:30',
-            'phone' => 'required|numeric|min:11',
-            'email' => 'required|email|min:3|max:1000',
+            'name' => 'required|min:3|max:30',
+            'phone' => 'required|numeric|unique:users|min:11',
+            'email' => 'required|email|unique:users|min:3|max:1000',
             'user_subscribtion' => 'required|integer|min:1',
-
+            'user_password' => 'required|min:3|max:30',
+            'user_password_confirmation' => 'required|same:user_password',
+ 
         ]);
         if ($request->user_password || $request->user_password_confirmation) {
             $request->validate([
@@ -97,13 +96,12 @@ class UsersController extends Controller
             ]);
         }
         $user->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
+            'name' => $request->last_name,
             'phone' => $request->phone,
             'email' => $request->email,
             'subscribtion_id' => $request->user_subscribtion,
-
-            'status' => 'active'
+            'status' => 'active',
+            'password' => Hash::make($request->user_password),
         ]);
         if ($request->user_password || $request->user_password_confirmation) {
             $user->update([

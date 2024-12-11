@@ -17,8 +17,9 @@
         integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/style.css') }}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
  </head>
 
@@ -36,7 +37,7 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('resources/js/app.js') }}"></script>
+<script src="{{ asset('public/script.js') }}"></script>
 
 
 

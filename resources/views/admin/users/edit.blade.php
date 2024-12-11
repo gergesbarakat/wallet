@@ -75,7 +75,7 @@ use App\models\Category;
                         ?>
                         <div class="card">
                             <div class="card-body">
-                                <form id="add-user" action="{{ route('users.update', $user->id) }}" method="post"
+                                <form id="add-user" action="{{ route('admin.users.update', $user->id) }}" method="post"
                                     autocomplete="off" enctype="multipart/form-data" novalidate="novalidate"
                                     class="bv-form">
                                     @method('PATCH')
@@ -83,25 +83,13 @@ use App\models\Category;
 
                                     @csrf
 
-                                    <div class="form-group mb-3">
-                                        <label>first Name <span class="text-danger">*
+                                     <div class="form-group mb-3">
+                                        <label>name <span class="text-danger">*
                                             </span></label>
-                                        <input class="form-control" type="text" name="first_name" id="first_name"
-                                            required="" data-bv-field="first_name" value="{{ $user->first_name }}">
-                                        @error('first_name')
-                                            <small class="help-block" data-bv-validator="file" data-bv-for="first_name"
-                                                data-bv-result="NOT_VALIDATED">
-                                                {{ $message }}
-                                            </small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label>last name <span class="text-danger">*
-                                            </span></label>
-                                        <input class="form-control" type="text" name="last_name" id="last_name"
-                                            required="" data-bv-field="last_name" value="{{ $user->last_name }}">
-                                        @error('last_name')
-                                            <small class="help-block" data-bv-validator="file" data-bv-for="last_name"
+                                        <input class="form-control" type="text" name="name" id="name"
+                                            required="" data-bv-field="name" value="{{ $user->name }}">
+                                        @error('name')
+                                            <small class="help-block" data-bv-validator="file" data-bv-for="name"
                                                 data-bv-result="NOT_VALIDATED">
                                                 {{ $message }}
                                             </small>
@@ -199,7 +187,7 @@ use App\models\Category;
                                     <div class="form-group mt-4">
                                         <button class="btn btn-primary mr-2" name="form_submit" value="submit"
                                             type="submit">Update user</button>
-                                        <a href="{{ route('users.show', '') }}" class="btn btn-cancel">Cancel</a>
+                                        <a href="{{ route('admin.users.show', '') }}" class="btn btn-cancel">Cancel</a>
                                     </div>
                                 </form>
                             </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +13,10 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
-        integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -32,7 +32,7 @@
             <script>
                 Swal.fire('', '{{ $error }}', 'error')
             </script>
-         @endforeach
+        @endforeach
     @endif
     @if (session()->has('error'))
         <script>
@@ -58,6 +58,6 @@
         </main>
     </div>
 </body>
-@vite('resources/js/app.js')
+<script src="{{ asset('resources/js/app.js') }}"></script>
 
 </html>
